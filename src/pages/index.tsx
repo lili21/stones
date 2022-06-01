@@ -1,6 +1,15 @@
-const HomePage = () => {
+// import fs from 'fs'
+export const getServerSideProps = () => {
+  return { message: 'Hello from the server!' }
+}
+
+type Props = {
+  message: string;
+}
+
+const HomePage = ({message}: Props) => {
   return (<div onClick={() => { console.log('hello')}}>
-    Hello from stones
+    {message}
   </div>)
 }
 

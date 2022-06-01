@@ -29,7 +29,7 @@ export const serverRenderRoute = ({ vite }: Props): RequestHandler => async(req,
     const html = template.replace(`<!--app-html-->`, appHtml).replace('</head>', `<script>window._STONES_PROPS_ = ${JSON.stringify(props)}</script></head>`)
   res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
 
-  } catch (e) {
+  } catch (e: any) {
     vite.ssrFixStacktrace(e);
     console.error(e);
     res.status(500).end(e.message);
