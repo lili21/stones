@@ -1,6 +1,7 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import { serverRenderRoute } from "./ssr/serverRenderRoute";
+import { getServerSideProps } from './ssr/getServerSideProps'
 
 async function createServer() {
   // creates a standard express app
@@ -12,6 +13,8 @@ async function createServer() {
   });
   // register vite's middleware
   app.use(vite.middlewares);
+
+  app.use('/data/*', getServerSideProps({ vite }))
   
   // when a page is requested, call our serverRenderRoute method
   app.use("*", serverRenderRoute({ vite }));

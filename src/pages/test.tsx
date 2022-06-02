@@ -1,7 +1,13 @@
-const Test = () => {
+import path from 'path';
+import { Link } from "../Link"
+export const getServerSideProps = () => {
+  return { message: 'Hello from the server test!' }
+}
+const Test = (props) => {
   return (
     <div>
-      Hello from test
+      {props.message}
+      <Link to="/">Go Home</Link>
     </div>
   )
 }

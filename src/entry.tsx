@@ -16,9 +16,10 @@ export const App = ({ page }: Props) => {
 }
 
 const hydrate = async () => {
-  let activeRoute = routes.find(route => route.path = window.location.pathname)
+  let activeRoute = routes.find(route => route.path === window.location.pathname)
 
   let { default: component } = await activeRoute.getComponent()
+  console.log(activeRoute)
 
   ReactDOM.hydrate(
     <App
